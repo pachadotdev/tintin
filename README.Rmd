@@ -86,7 +86,7 @@ ggplot(total_head_trauma_10) +
     title = "Top ten causes of injury") +
   scale_fill_manual(values = tintin_clrs(
     n = length(unique(total_head_trauma_10$book_title)), 
-    option = "the_castafiore_emerald"),
+    option = "the_black_island"),
     name = "Book") +
   coord_flip()
 
@@ -97,7 +97,7 @@ ggplot(total_head_trauma_10) +
     fill = book_title), position = "dodge") +
   labs(x = "Cause of injury", y = "Loss of consciousness length",
     title = "Top ten causes of injury") +
-  scale_fill_manual(values = tintin_pal(option = "the_castafiore_emerald")(8), 
+  scale_fill_manual(values = tintin_pal(option = "the_black_island")(8), 
     name = "Book") +
   coord_flip()
 ```
@@ -114,7 +114,7 @@ total_head_trauma_y <- tintin_head_trauma %>%
   pivot_longer(loss_of_consciousness_length:loss_of_consciousness_severity)
 
 ggplot(total_head_trauma_y) +
-  geom_line(aes(x = year, y = value, color = name)) +
+  geom_line(aes(x = year, y = value, color = name), linewidth = 1.5) +
   labs(x = "Year", y = "Loss of consciousness length/severity",
     title = "Result of injuries per year") +
   theme_minimal() +
@@ -133,7 +133,7 @@ dsub$diff <- with(dsub, sqrt(abs(x - y)) * sign(x - y))
 d <- ggplot(dsub, aes(x, y, colour = diff)) + geom_point()
 
 d + 
-  scale_colour_tintin_c(option = "tintin_in_the_land_of_the_soviets") + 
+  scale_colour_tintin_c(option = "the_castafiore_emerald") + 
   theme_bw()
 ```
 
