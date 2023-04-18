@@ -63,11 +63,11 @@ rgb2hex <- function(r, g, b) {
 #'
 #' \if{html}{Here are the color scales:
 #'
-#'   \out{<div style="text-align: center">}\figure{tintin-scales.png}{options: style="width:750px;max-width:75\%;"}\out{</div>}
+#'   \out{<div style="text-align: center">}\figure{tintin-colours.png}{options: style="width:750px;max-width:75\%;"}\out{</div>}
 #'   }
 #' \if{latex}{Here are the color scales:
 #'
-#'   \out{\begin{center}}\figure{tintin-scales.png}\out{\end{center}}
+#'   \out{\begin{center}}\figure{tintin-colours.png}\out{\end{center}}
 #'   }
 #'
 #' Semi-transparent colors (\eqn{0 < alpha < 1}) are supported only on some
