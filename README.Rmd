@@ -23,6 +23,44 @@ knitr::opts_chunk$set(
 
 The goal of tintin is to provide palettes generated from Tintin covers. There is one palette per cover, with a total of 24 palettes of 5 colours each. Includes functions to interpolate colors in order to create more colors based on the provided palettes.
 
+```{r echo=FALSE, fig.width=7, fig.height=7}
+showcol <- function (pal = rev(tintin::tintin_colours), n = NULL, type = "all", exact.n = TRUE) {
+  gaplist <- ""
+
+  maxnum <- 5
+
+  palattr <- switch(type, qual = "qualitative", div = "divergent",
+                    seq = "sequential", all = "qualitative+divergent+sequential")
+  if (is.null(n))
+    n <- maxnum
+
+  if (length(n) == 1)
+    n <- rep(n, length(pal))
+
+  n[n < 3] <- 3
+  n[n > maxnum] <- maxnum[n > maxnum]
+  nr <- length(pal)
+  nc <- max(n)
+  ylim <- c(0, nr)
+  oldpar <- par(mgp = c(2, 0.25, 0))
+  on.exit(par(oldpar))
+  plot(1, 1, xlim = c(-4, nc), ylim = ylim, type = "n", axes = FALSE,
+       bty = "n", xlab = "", ylab = "")
+  for (i in 1:nr) {
+    nj <- n[i]
+    if (pal[i] == "")
+      next
+    shadi <- pal[[i]]
+    rect(xleft = 0:(nj - 1), ybottom = i - 1, xright = 1:nj,
+         ytop = i - 0.2, col = shadi, border = "light grey")
+  }
+  text(rep(-0.1, nr), (1:nr) - 0.6, labels = names(pal), xpd = TRUE,
+       adj = 1)
+}
+
+showcol()
+```
+
 ## Installation
 
 You can install the development version of tintin like so:
@@ -123,17 +161,31 @@ ggplot(total_head_trauma_y) +
 ```
 
 We can also use the package for the continuous case. For this case,
-we'll adapt from `ggplot2` examples.
+we'll plot a map of Canada.
 
-```{r}
-dsub <- subset(diamonds, x > 5 & x < 6 & y > 5 & y < 6)
+```{r fig.height=10, fig.width=15, message=FALSE, warning=FALSE}
+# updated 2023-03-26 from
+# https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-map.csv
 
-dsub$diff <- with(dsub, sqrt(abs(x - y)) * sign(x - y))
+library(canadamaps)
 
-d <- ggplot(dsub, aes(x, y, colour = diff)) + geom_point()
+vaccination <- data.frame(
+  pruid = c(10,11,12,13,24,35,46,47,48,59,60,61,62),
+  proptotal_atleast1dose = c(96.1,89.9,89.7,86.9,80.8,84,82.2,81.7,79.7,86.7,84.8,79.1,85)
+)
 
-d + 
-  scale_colour_tintin_c(option = "the_castafiore_emerald") + 
-  theme_bw()
+vaccination <- vaccination %>% 
+  left_join(get_provinces(), by = "pruid") %>% # canadamaps in action
+  mutate(
+    label = paste(gsub(" /.*", "", prname),
+                  paste0(proptotal_atleast1dose, "%"), sep = "\n"),
+  )
+
+vaccination %>% 
+  ggplot() +
+  geom_sf(aes(fill = proptotal_atleast1dose, geometry = geometry)) +
+  geom_sf_label(aes(label = label, geometry = geometry)) +
+  scale_fill_tintin_c(option = "the_castafiore_emerald") +
+  labs(title = "Cumulative percent of the population who have received at least 1 dose of a COVID-19 vaccine")
 ```
 

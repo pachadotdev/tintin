@@ -73,7 +73,7 @@ tintin_colours[[18]] <- c("#177dc7", "#508551", "#b37731", "#aed361", "#01b8f2")
 tintin_colours[[19]] <- c("#0fa9a1", "#cc6554", "#c8870f", "#bb593e", "#7eac6e")
 
 tintin_colours[[20]] <- c("#0598e6", "#b49a1f", "#e2352f", "#bfb38d", "#67a45e")
-tintin_colours[[21]] <- c("#104442", "#044d76", "#005e3c", "#3f7656", "#6e928e")
+tintin_colours[[21]] <- c("#005e3c", "#004c76", "#e3001c", "#f9c615", "#066470")
 tintin_colours[[22]] <- c("#0097d5", "#b05421", "#fef26a", "#016eaf", "#a0ad75")
 tintin_colours[[23]] <- c("#04a0d3", "#c2a471", "#4f8358", "#c0d645", "#9f4834")
 

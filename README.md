@@ -11,6 +11,8 @@ There is one palette per cover, with a total of 24 palettes of 5 colours
 each. Includes functions to interpolate colors in order to create more
 colors based on the provided palettes.
 
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
 ## Installation
 
 You can install the development version of tintin like so:
@@ -84,7 +86,7 @@ ggplot(total_head_trauma_10) +
   coord_flip()
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
 ``` r
 # or alternatively
@@ -99,7 +101,7 @@ ggplot(total_head_trauma_10) +
   coord_flip()
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-2.png" width="100%" />
 
 The use of colour instead of fill is analogous. Let’s plot the top ten
 causes of injury per year to see it.
@@ -121,21 +123,35 @@ ggplot(total_head_trauma_y) +
     name = "Cause of injury")
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
 We can also use the package for the continuous case. For this case,
-we’ll adapt from `ggplot2` examples.
+we’ll plot a map of Canada.
 
 ``` r
-dsub <- subset(diamonds, x > 5 & x < 6 & y > 5 & y < 6)
+# updated 2023-03-26 from
+# https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-map.csv
 
-dsub$diff <- with(dsub, sqrt(abs(x - y)) * sign(x - y))
+library(canadamaps)
 
-d <- ggplot(dsub, aes(x, y, colour = diff)) + geom_point()
+vaccination <- data.frame(
+  pruid = c(10,11,12,13,24,35,46,47,48,59,60,61,62),
+  proptotal_atleast1dose = c(96.1,89.9,89.7,86.9,80.8,84,82.2,81.7,79.7,86.7,84.8,79.1,85)
+)
 
-d + 
-  scale_colour_tintin_c(option = "the_castafiore_emerald") + 
-  theme_bw()
+vaccination <- vaccination %>% 
+  left_join(get_provinces(), by = "pruid") %>% # canadamaps in action
+  mutate(
+    label = paste(gsub(" /.*", "", prname),
+                  paste0(proptotal_atleast1dose, "%"), sep = "\n"),
+  )
+
+vaccination %>% 
+  ggplot() +
+  geom_sf(aes(fill = proptotal_atleast1dose, geometry = geometry)) +
+  geom_sf_label(aes(label = label, geometry = geometry)) +
+  scale_fill_tintin_c(option = "the_castafiore_emerald") +
+  labs(title = "Cumulative percent of the population who have received at least 1 dose of a COVID-19 vaccine")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
