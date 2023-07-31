@@ -97,6 +97,10 @@ tintin_clrs <- function(n = 5, alpha = 1, begin = 0, end = 1, direction = 1, opt
     return(character(0))
   }
 
+  option <- tolower(gsub(" ", "_",
+    gsub("\\s+", " ",
+      gsub("^\\s+|\\s+$", "", option))))
+
   option <- switch(
     EXPR = option,
     tintin_in_the_land_of_the_soviets = "tintin_in_the_land_of_the_soviets",

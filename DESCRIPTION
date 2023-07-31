@@ -1,6 +1,6 @@
 Package: tintin
 Title: Tintin Palette Generator
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: 
     person("Mauricio", "Vargas Sepulveda", , "mavargas11@uc.cl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1017-7574"))
