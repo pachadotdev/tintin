@@ -1,6 +1,6 @@
 Package: tintin
 Title: Tintin Palette Generator
-Version: 0.1
+Version: 0.2
 Authors@R: 
     person("Mauricio", "Vargas Sepulveda", , "mavargas11@uc.cl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1017-7574"))
@@ -11,7 +11,7 @@ Description: Palettes generated from Tintin covers. There is one palette per
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Depends: 
     R (>= 2.10)
 LazyData: true
