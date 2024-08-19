@@ -9,7 +9,7 @@ rgb2hex <- function(r, g, b) {
 #'
 #' @param n The number of colors (\eqn{\ge 1}) to be in the palette.
 #'
-#' @param alpha	The alpha transparency, a number in `[0,1]`, see argument alpha in
+#' @param alpha The alpha transparency, a number in `[0,1]`, see argument alpha in
 #' \code{\link[grDevices]{hsv}}.
 #'
 #' @param begin The (corrected) hue in `[0,1]` at which the color map begins.
@@ -22,31 +22,31 @@ rgb2hex <- function(r, g, b) {
 #'
 #' @param option A character string indicating the color map option to use.
 #'  Options are available with tidy names (i.e., 'the_blue_lotus'):
-#'  \itemize{
-#'    \item "Tintin in the Land of the Soviets"
-#'    \item "Tintin in the Congo"
-#'    \item "Tintin in America"
-#'    \item "Cigars of the Pharaoh"
-#'    \item "The Blue Lotus" (Standard)
-#'    \item "The Broken Ear"
-#'    \item "The Black Island"
-#'    \item "King Ottokar's Sceptre"
-#'    \item "The Crab with the Golden Claws"
-#'    \item "The Shooting Star"
-#'    \item "The Secret of the Unicorn"
-#'    \item "Red Rackham's Treasure"
-#'    \item "The Seven Crystal Balls"
-#'    \item "Prisoners of the Sun"
-#'    \item "Land of Black Gold"
-#'    \item "Destination Moon"
-#'    \item "Explorers on the Moon"
-#'    \item "The Calculus Affair"
-#'    \item "The Red Sea Sharks"
-#'    \item "Tintin in Tibet"
-#'    \item "The Castafiore Emerald"
-#'    \item "Flight 714 to Sydney"
-#'    \item "Tintin and the Picaros"
-#'    \item "Tintin and Alph-Art"
+#'  \describe{
+#'    \item{"Tintin in the Land of the Soviets"}{}
+#'    \item{"Tintin in the Congo"}{}
+#'    \item{"Tintin in America"}{}
+#'    \item{"Cigars of the Pharaoh"}{}
+#'    \item{"The Blue Lotus" (Standard)}{}
+#'    \item{"The Broken Ear"}{}
+#'    \item{"The Black Island"}{}
+#'    \item{"King Ottokar's Sceptre"}{}
+#'    \item{"The Crab with the Golden Claws"}{}
+#'    \item{"The Shooting Star"}{}
+#'    \item{"The Secret of the Unicorn"}{}
+#'    \item{"Red Rackham's Treasure"}{}
+#'    \item{"The Seven Crystal Balls"}{}
+#'    \item{"Prisoners of the Sun"}{}
+#'    \item{"Land of Black Gold"}{}
+#'    \item{"Destination Moon"}{}
+#'    \item{"Explorers on the Moon"}{}
+#'    \item{"The Calculus Affair"}{}
+#'    \item{"The Red Sea Sharks"}{}
+#'    \item{"Tintin in Tibet"}{}
+#'    \item{"The Castafiore Emerald"}{}
+#'    \item{"Flight 714 to Sydney"}{}
+#'    \item{"Tintin and the Picaros"}{}
+#'    \item{"Tintin and Alph-Art"}{}
 #'  }
 #'
 #' @importFrom dplyr rowwise mutate distinct pull across everything arrange as_tibble
@@ -59,19 +59,9 @@ rgb2hex <- function(r, g, b) {
 #'  codes. This can be used either to create a user-defined color palette for
 #'  subsequent graphics.
 #'
-#' @details
-#'
-#' \if{html}{Here are the color scales:
-#'
-#'   \out{<div style="text-align: center">}\figure{tintin-colours.png}{options: style="width:750px;max-width:75\%;"}\out{</div>}
-#'   }
-#' \if{latex}{Here are the color scales:
-#'
-#'   \out{\begin{center}}\figure{tintin-colours.png}\out{\end{center}}
-#'   }
-#'
+#' @details Check the README for the display of the color palettes.
 #' Semi-transparent colors (\eqn{0 < alpha < 1}) are supported only on some
-#'  devices: see \code{\link[grDevices]{rgb}}.
+#' devices (see \code{\link[grDevices]{rgb}}).
 #'
 #' @examples
 #' \dontrun{

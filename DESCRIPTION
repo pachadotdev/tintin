@@ -22,3 +22,6 @@ Imports:
     rlang,
     scales,
     tidyr
+Suggests: 
+    spelling
+Language: en-US
