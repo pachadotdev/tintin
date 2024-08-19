@@ -3,3 +3,7 @@
 ^dev$
 ^LICENSE\.md$
 ^README\.Rmd$
+^CRAN-SUBMISSION$
+README\.html
+docs
+pkgdown

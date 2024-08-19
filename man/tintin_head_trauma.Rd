@@ -20,12 +20,12 @@ tintin_head_trauma
 Neurological traumas sustained by the subject (by book title)
 }
 \details{
-\itemize{
-\item{\code{year}}{ Release year of the comic, first ocurrence was used
+\describe{
+\item{\code{year}}{Release year of the comic, first occurrence was used
 for titles with a b&w and colour edition}
-\item{\code{book_title}}{ English title of the books}
-\item{\code{page}}{ Page number where the traumas happen}
-\item{\code{cause_of_injury}}{ What causes the trauma (i.e., explosion)}
+\item{\code{book_title}}{English title of the books}
+\item{\code{page}}{Page number where the traumas happen}
+\item{\code{cause_of_injury}}{What causes the trauma (i.e., explosion)}
 \item{\code{loss_of_consciousness_length}}{Loss of consciousness length
 measured by the number of cartoon frames before subject returns to normal
 activity.}
