@@ -9,7 +9,7 @@
 Palettes generated from Tintin covers. There is one palette per cover, with a total of 24 palettes of 5 colours each. Includes functions to interpolate colors in order to create more colors based on the provided palettes.
 }
 \author{
-\strong{Maintainer}: Mauricio Vargas Sepulveda \email{mavargas11@uc.cl} (\href{https://orcid.org/0000-0003-1017-7574}{ORCID})
+\strong{Maintainer}: Mauricio Vargas Sepulveda \email{m.sepulveda@mail.utoronto.ca} (\href{https://orcid.org/0000-0003-1017-7574}{ORCID})
 
 }
 \keyword{internal}
