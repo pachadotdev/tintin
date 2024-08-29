@@ -166,9 +166,7 @@ Options are available with tidy names (i.e., 'the_blue_lotus'):</p><dl><dt>"Tint
     <h2>Value</h2>
     
 
-<p><code>tintin_clrs</code> returns a character vector, <code>cv</code>, of color hex
-codes. This can be used either to create a user-defined color palette for
-subsequent graphics.</p>
+<p>A <code>character</code> vector of colors.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -179,15 +177,28 @@ devices (see <code><a href="https://rdrr.io/r/grDevices/rgb.html" class="externa
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># using code from RColorBrewer to demo the palette</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># without extrapolation: 5 or fewer colors</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">tintin_clrs</span><span class="op">(</span><span class="va">n</span>, option <span class="op">=</span> <span class="st">"the_blue_lotus"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "#e30013" "#1a9abd" "#8d512d" "#de9c62" "#30515a"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  col <span class="op">=</span> <span class="fu">tintin_clrs</span><span class="op">(</span><span class="va">n</span>, option <span class="op">=</span> <span class="st">"the_blue_lotus"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  xlab <span class="op">=</span> <span class="st">"Tintin darkblue n"</span>, ylab <span class="op">=</span> <span class="st">""</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span>, bty <span class="op">=</span> <span class="st">"n"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="tintin_clrs-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># with extrapolation: 6 or more colors</span></span></span>
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/image.html" class="external-link">image</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fl">1</span><span class="op">:</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  col <span class="op">=</span> <span class="fu">tintin_clrs</span><span class="op">(</span><span class="va">n</span>, option <span class="op">=</span> <span class="st">"the_blue_lotus"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  xlab <span class="op">=</span> <span class="st">"Tintin darkblue n"</span>, ylab <span class="op">=</span> <span class="st">""</span>, xaxt <span class="op">=</span> <span class="st">"n"</span>, yaxt <span class="op">=</span> <span class="st">"n"</span>, bty <span class="op">=</span> <span class="st">"n"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-plt img"><img src="tintin_clrs-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

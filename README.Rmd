@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 # tintin <img src="man/figures/logo.svg" align="right" height="139" alt="" />
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/tintin)](https://CRAN.R-project.org/package=tintin)
 <!-- badges: end -->
 
 The goal of tintin is to provide palettes generated from Tintin covers. There is one palette per cover, with a total of 24 palettes of 5 colours each. Includes functions to interpolate colors in order to create more colors based on the provided palettes.
@@ -62,6 +63,12 @@ showcol()
 ```
 
 ## Installation
+
+You can install the released version of tintin from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tintin")
+```
 
 You can install the development version of tintin like so:
 

@@ -113,12 +113,14 @@ where \code{NA} is always placed at the far right.}
 \item{guide}{A function used to create a guide or its name. See
 \code{\link[ggplot2:guides]{guides()}} for more information.}
 }
+\value{
+A \code{ggproto} object for use with \code{ggplot2}.
+}
 \description{
 The \code{tintin} scales provide colour maps for the different Tintin
 covers.
 }
 \examples{
-\dontrun{
 library(dplyr)
 library(ggplot2)
 library(tintin)
@@ -126,6 +128,8 @@ library(tintin)
 total_head_trauma <- tintin_head_trauma \%>\%
   arrange(-loss_of_consciousness_length) \%>\%
   filter(row_number() <= 5)
+
+# discrete scale
 
 ggplot(total_head_trauma) +
   geom_col(aes(x = cause_of_injury, y = loss_of_consciousness_length,
@@ -135,6 +139,21 @@ ggplot(total_head_trauma) +
   theme_minimal() +
   scale_fill_tintin_d(option = "cigars_of_the_pharaoh", direction = -1) +
   coord_flip()
-}
+
+# continuous scale
+
+# continuous scale
+ggplot(total_head_trauma) +
+ geom_col(aes(
+   x = cause_of_injury, y = loss_of_consciousness_length,
+   fill = year
+ ), position = "dodge") +
+ labs(
+   x = "Cause of injury", y = "Loss of consciousness length",
+   title = "Top five causes of injury"
+ ) +
+ theme_minimal() +
+ scale_fill_tintin_c(option = "cigars_of_the_pharaoh", direction = -1)
+
 }
 \concept{colour scales}

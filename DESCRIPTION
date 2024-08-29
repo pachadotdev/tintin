@@ -7,7 +7,8 @@ Authors@R:
 Description: Palettes generated from Tintin covers. There is one palette per
   cover, with a total of 24 palettes of 5 colours each. Includes functions to
   interpolate colors in order to create more colors based on the provided
-  palettes.
+  palettes. The data is based on Cyr, et al. (2004) <doi:10.1503/cmaj.1041405>
+  and Wikipedia <https://en.wikipedia.org/wiki/The_Adventures_of_Tintin>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

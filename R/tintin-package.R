@@ -12,8 +12,9 @@
 #' @keywords datasets
 #' @name tintin_colours
 #' @usage tintin_colours
-#' @source Tintin covers obtained from Wikipedia and processed with ImageMagick
-#' @format A list with 23 vectors
+#' @source Tintin covers obtained from Wikipedia and processed with ImageMagick.
+#' @format A list with 23 vectors.
+#' @examples head(tintin_colours)
 NULL
 
 #' Tintin Head Trauma

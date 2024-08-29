@@ -5,10 +5,10 @@
 \alias{tintin_colours}
 \title{Tintin Colours}
 \format{
-A list with 23 vectors
+A list with 23 vectors.
 }
 \source{
-Tintin covers obtained from Wikipedia and processed with ImageMagick
+Tintin covers obtained from Wikipedia and processed with ImageMagick.
 }
 \usage{
 tintin_colours
@@ -18,5 +18,8 @@ A list with 23 vectors (one per Tintin book) containing the five most
 frequent colors per cover. White tones were removed to balance
 the palettes. Alph-Art is Herge's unfinished book, it was published
 posthumously, so we don't consider it in the list.
+}
+\examples{
+head(tintin_colours)
 }
 \keyword{datasets}

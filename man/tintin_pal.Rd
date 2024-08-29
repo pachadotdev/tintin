@@ -53,6 +53,9 @@ Options are available:
 \item "Tintin and Alph-Art"
 }}
 }
+\value{
+A function that takes an integer argument and returns a \code{character} vector of colors.
+}
 \description{
 A wrapper function around \code{Tintin_clrs} to
 turn it into a palette function compatible with
@@ -62,6 +65,8 @@ turn it into a palette function compatible with
 See \code{Tintin_clrs} for more information on the color palettes.
 }
 \examples{
+tintin_pal()
+
 scales::show_col(tintin_pal()(5))
 
 }

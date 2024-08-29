@@ -57,9 +57,7 @@ Options are available with tidy names (i.e., 'the_blue_lotus'):
 }}
 }
 \value{
-\code{tintin_clrs} returns a character vector, \code{cv}, of color hex
-codes. This can be used either to create a user-defined color palette for
-subsequent graphics.
+A \code{character} vector of colors.
 }
 \description{
 This function creates a vector of colours along the selected
@@ -71,13 +69,23 @@ Semi-transparent colors (\eqn{0 < alpha < 1}) are supported only on some
 devices (see \code{\link[grDevices]{rgb}}).
 }
 \examples{
-\dontrun{
-# using code from RColorBrewer to demo the palette
+# without extrapolation: 5 or fewer colors
+n <- 5
+
+tintin_clrs(n, option = "the_blue_lotus")
+
+image(
+  1:n, 1, as.matrix(1:n),
+  col = tintin_clrs(n, option = "the_blue_lotus"),
+  xlab = "Tintin darkblue n", ylab = "", xaxt = "n", yaxt = "n", bty = "n"
+)
+
+# with extrapolation: 6 or more colors
 n <- 20
 image(
   1:n, 1, as.matrix(1:n),
   col = tintin_clrs(n, option = "the_blue_lotus"),
   xlab = "Tintin darkblue n", ylab = "", xaxt = "n", yaxt = "n", bty = "n"
 )
-}
+
 }

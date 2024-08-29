@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/tintin)](https://CRAN.R-project.org/package=tintin)
 <!-- badges: end -->
 
 The goal of tintin is to provide palettes generated from Tintin covers.
@@ -15,6 +17,13 @@ colors based on the provided palettes.
 <img src="man/figures/README-pallettes-1.png" width="100%" />
 
 ## Installation
+
+You can install the released version of tintin from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tintin")
+```
 
 You can install the development version of tintin like so:
 

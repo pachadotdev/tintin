@@ -16,10 +16,9 @@
 #' @param values if colours should not be evenly positioned along the gradient this
 #' vector gives the position (between 0 and 1) for each colour in the colours vector.
 #' @family colour scales
-#' @export
 #' @rdname scale_fill_tintin_d
+#' @return A `ggproto` object for use with `ggplot2`.
 #' @examples
-#' \dontrun{
 #' library(dplyr)
 #' library(ggplot2)
 #' library(tintin)
@@ -27,7 +26,9 @@
 #' total_head_trauma <- tintin_head_trauma %>%
 #'   arrange(-loss_of_consciousness_length) %>%
 #'   filter(row_number() <= 5)
-#'
+#' 
+#' # discrete scale
+#' 
 #' ggplot(total_head_trauma) +
 #'   geom_col(aes(x = cause_of_injury, y = loss_of_consciousness_length,
 #'     fill = book_title), position = "dodge") +
@@ -36,7 +37,23 @@
 #'   theme_minimal() +
 #'   scale_fill_tintin_d(option = "cigars_of_the_pharaoh", direction = -1) +
 #'   coord_flip()
-#' }
+#' 
+#' # continuous scale
+#' 
+#' # continuous scale
+#' ggplot(total_head_trauma) +
+#'  geom_col(aes(
+#'    x = cause_of_injury, y = loss_of_consciousness_length,
+#'    fill = year
+#'  ), position = "dodge") +
+#'  labs(
+#'    x = "Cause of injury", y = "Loss of consciousness length",
+#'    title = "Top five causes of injury"
+#'  ) +
+#'  theme_minimal() +
+#'  scale_fill_tintin_c(option = "cigars_of_the_pharaoh", direction = -1)
+#' 
+#' @export
 scale_fill_tintin_d <- function(..., alpha = 1, begin = 0, end = 1, direction = 1,
                               option = "the_blue_lotus", aesthetics = "fill") {
   discrete_scale(aesthetics, "the_blue_lotus", tintin_pal(alpha, begin, end, direction, option), ...)

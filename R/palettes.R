@@ -55,24 +55,33 @@ rgb2hex <- function(r, g, b) {
 #' @importFrom stats kmeans
 #' @importFrom rlang sym
 #'
-#' @return \code{tintin_clrs} returns a character vector, \code{cv}, of color hex
-#'  codes. This can be used either to create a user-defined color palette for
-#'  subsequent graphics.
+#' @return A `character` vector of colors.
+
 #'
 #' @details Check the README for the display of the color palettes.
 #' Semi-transparent colors (\eqn{0 < alpha < 1}) are supported only on some
 #' devices (see \code{\link[grDevices]{rgb}}).
 #'
 #' @examples
-#' \dontrun{
-#' # using code from RColorBrewer to demo the palette
+#' # without extrapolation: 5 or fewer colors
+#' n <- 5
+#' 
+#' tintin_clrs(n, option = "the_blue_lotus")
+#' 
+#' image(
+#'   1:n, 1, as.matrix(1:n),
+#'   col = tintin_clrs(n, option = "the_blue_lotus"),
+#'   xlab = "Tintin darkblue n", ylab = "", xaxt = "n", yaxt = "n", bty = "n"
+#' )
+#' 
+#' # with extrapolation: 6 or more colors
 #' n <- 20
 #' image(
 #'   1:n, 1, as.matrix(1:n),
 #'   col = tintin_clrs(n, option = "the_blue_lotus"),
 #'   xlab = "Tintin darkblue n", ylab = "", xaxt = "n", yaxt = "n", bty = "n"
 #' )
-#' }
+#' 
 #' @export
 tintin_clrs <- function(n = 5, alpha = 1, begin = 0, end = 1, direction = 1, option = "the_blue_lotus") {
   if (begin < 0 | begin > 1 | end < 0 | end > 1) {
@@ -166,12 +175,10 @@ tintin_clrs <- function(n = 5, alpha = 1, begin = 0, end = 1, direction = 1, opt
     return(use_clrs)
   }
 
-  set.seed(1234)
-
   use_clrs_s <- crossing(col1 = use_clrs, col2 = use_clrs) %>%
     rowwise() %>%
     # interpolate 9 colors, take the midpoint
-    mutate(colf = colorRampPalette(c(!!sym("col1"), !!sym("col2")))(9)[5]) %>%
+    mutate(colf = colorRampPalette(c(!!sym("col1"), !!sym("col2")))(n)[5]) %>%
     distinct(!!sym("colf")) %>%
     pull()
 
@@ -239,9 +246,13 @@ tintin_clrs <- function(n = 5, alpha = 1, begin = 0, end = 1, direction = 1, opt
 #'  }
 #'
 #' @examples
+#' tintin_pal()
+#' 
 #' scales::show_col(tintin_pal()(5))
 #'
 #' @importFrom rlang is_installed
+#' 
+#' @return A function that takes an integer argument and returns a `character` vector of colors.
 #'
 #' @export
 tintin_pal <- function(alpha = 1, begin = 0, end = 1, direction = 1, option = "the_blue_lotus") {
